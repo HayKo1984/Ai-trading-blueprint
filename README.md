@@ -73,10 +73,24 @@ python tools/morning_brief.py
 - `notion/strategy-scorecard.md` - Strategy evaluation
 - `notion/daily-workflow.md` - Daily trading routine
 
+## 🚀 Get the Full Blueprint
+
+**Want everything in one package?** Get the complete AI Trading Setup Blueprint on Gumroad:
+
+👉 **[Buy on Gumroad - $197 Early Bird](https://haykohsoul.gumroad.com/l/vbgmwt)**
+
+Includes:
+- 5 PDF Modules (100+ pages)
+- 14 Strategy Agent YAMLs
+- 3 Notion Templates
+- Agency Agents Bonus Pack
+- Free updates for life
+
 ## 🤝 Connect
 
 - GitHub: https://github.com/HayKo1984
 - Email: hello@ai-trading.blueprint
+- Gumroad: https://haykohsoul.gumroad.com/l/vbgmwt
 
 ## 📜 License
 
