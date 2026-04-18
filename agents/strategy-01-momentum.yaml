@@ -1,0 +1,37 @@
+name: Momentum Breakout
+description: |
+  Buy when stock breaks out with >5% price increase in 10 minutes
+  with above-average volume. High momentum indicates institutional interest.
+
+triggers:
+  price_change_10min:
+    operator: ">"
+    value: 5.0
+    unit: "percent"
+  volume_spike:
+    operator: ">"
+    value: 200.0
+    unit: "percent_average"
+
+scoring:
+  weight: 1.0
+  min_threshold: 8.0
+  factors:
+    momentum_score: 0.40
+    volume_ratio: 0.25
+    price_level: 0.20
+    time_of_day: 0.15
+
+strategy:
+  type: momentum
+  holding_period: "1-5_days"
+  position_sizing: "kelly_criterion"
+
+signals:
+  buy:
+    primary: "price_change_10min > 5% AND volume_spike > 200%"
+    confirmation: "RSI < 70"
+  sell:
+    profit_target: 10.0
+    stop_loss: 5.0
+    time_based: 5

@@ -1,0 +1,37 @@
+name: Social Sentiment Arbitrage
+description: |
+  Exploits social media sentiment spikes. Buy when Reddit/Twitter
+  sentiment suddenly turns bullish before mainstream catches on.
+
+triggers:
+  sentiment_spike:
+    operator: ">"
+    value: 3.0
+  social_volume:
+    operator: ">"
+    value: 500
+  sentiment_score:
+    operator: ">"
+    value: 0.6
+
+scoring:
+  weight: 0.75
+  min_threshold: 8.0
+  factors:
+    sentiment_spike: 0.40
+    social_volume: 0.25
+    contrarian_indicator: 0.35
+
+strategy:
+  type: social_momentum
+  holding_period: "1-3_days"
+  position_sizing: "reduced_kelly"
+
+signals:
+  buy:
+    primary: "Sentiment spike > 3 AND volume > 500"
+    confirmation: "Not yet covered by mainstream"
+  sell:
+    profit_target: 7.0
+    stop_loss: 4.0
+    time_based: 3

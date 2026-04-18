@@ -1,0 +1,38 @@
+name: Goldman Small Cap Growth
+description: |
+  Identifies small-cap stocks with high growth potential per Goldman Sachs
+  research. Focus on companies with market cap < $2B and strong fundamentals.
+
+triggers:
+  market_cap:
+    operator: "<"
+    value: 2000000000
+  analyst_rating:
+    operator: ">="
+    value: 4.5
+  earnings_growth:
+    operator: ">"
+    value: 15.0
+
+scoring:
+  weight: 0.85
+  min_threshold: 8.0
+  factors:
+    goldman_rating: 0.40
+    market_cap_score: 0.25
+    growth_potential: 0.25
+    sector: 0.10
+
+strategy:
+  type: fundamental_growth
+  holding_period: "3-12_months"
+  position_sizing: "kelly_criterion"
+
+signals:
+  buy:
+    primary: "Goldman Buy rating AND market cap < $2B"
+    confirmation: "Earnings growth > 15%"
+  sell:
+    profit_target: 25.0
+    stop_loss: 15.0
+    time_based: 90

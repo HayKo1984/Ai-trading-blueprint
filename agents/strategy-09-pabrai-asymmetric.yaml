@@ -1,0 +1,37 @@
+name: Asymmetric Risk/Reward (Pabrai)
+description: |
+  Mohnish Pabrai's asymmetric investing. 3:1 upside/downside ratio.
+  Deep value with limited downside, unlimited upside.
+
+triggers:
+  upside_downside_ratio:
+    operator: ">="
+    value: 3.0
+  margin_of_safety:
+    operator: ">="
+    value: 30.0
+  intrinsic_value:
+    operator: ">"
+    value: 50.0
+
+scoring:
+  weight: 0.95
+  min_threshold: 8.0
+  factors:
+    asymmetry_ratio: 0.45
+    margin_of_safety: 0.35
+    catalyst: 0.20
+
+strategy:
+  type: asymmetric_value
+  holding_period: "1-3_years"
+  position_sizing: "concentrated"
+
+signals:
+  buy:
+    primary: "3:1 upside/downside ratio"
+    confirmation: "Margin of safety > 30%"
+  sell:
+    profit_target: 50.0
+    stop_loss: 10.0
+    time_based: 180

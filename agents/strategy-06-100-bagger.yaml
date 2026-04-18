@@ -1,0 +1,38 @@
+name: 100 Bagger Potential
+description: |
+  Peter Lynch's "10-bagger" philosophy on steroids. Find tiny companies
+  that could grow 100x. Focus on underserved markets, unique products.
+
+triggers:
+  market_cap:
+    operator: "<"
+    value: 500000000
+  tam_ratio:
+    operator: ">"
+    value: 10.0
+  product_score:
+    operator: ">="
+    value: 8.0
+
+scoring:
+  weight: 0.70
+  min_threshold: 8.5
+  factors:
+    tam_size: 0.30
+    competitive_moat: 0.30
+    growth_potential: 0.25
+    management: 0.15
+
+strategy:
+  type: super_growth
+  holding_period: "2-5_years"
+  position_sizing: "small_kelly"
+
+signals:
+  buy:
+    primary: "Market cap < $500M AND TAM ratio > 10x"
+    confirmation: "Product score > 8/10"
+  sell:
+    profit_target: 100.0
+    stop_loss: 50.0
+    time_based: 365

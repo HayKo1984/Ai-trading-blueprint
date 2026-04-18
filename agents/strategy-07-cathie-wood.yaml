@@ -1,0 +1,38 @@
+name: Cathie Wood Innovation Play
+description: |
+  ARK Invest-inspired strategy. Focus on disruption through technology,
+  genomics, robotics, AI. Long-term holding with high conviction.
+
+triggers:
+  innovation_score:
+    operator: ">="
+    value: 8.0
+  disruption_factor:
+    operator: ">="
+    value: 7.0
+  five_year_cagr:
+    operator: ">="
+    value: 25.0
+
+scoring:
+  weight: 0.90
+  min_threshold: 8.0
+  factors:
+    innovation_score: 0.40
+    disruption: 0.30
+    growth_trajectory: 0.20
+    funding: 0.10
+
+strategy:
+  type: innovation_disruption
+  holding_period: "1-3_years"
+  position_sizing: "kelly_criterion"
+
+signals:
+  buy:
+    primary: "Innovation score > 8 AND disruption > 7"
+    confirmation: "5-year CAGR > 25%"
+  sell:
+    profit_target: 50.0
+    stop_loss: 20.0
+    time_based: 180

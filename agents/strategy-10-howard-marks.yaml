@@ -1,0 +1,37 @@
+name: Howard Marks Value
+description: |
+  Oaktree Capital contrarian approach. Buy out-of-favor assets when
+  others are fearful. Focus on risk assessment and second-level thinking.
+
+triggers:
+  fear_gauge:
+    operator: "<"
+    value: 30.0
+  price_vs_nav:
+    operator: "<"
+    value: 0.8
+  institutional_avoidance:
+    operator: ">"
+    value: 70.0
+
+scoring:
+  weight: 0.85
+  min_threshold: 8.0
+  factors:
+    fear_level: 0.40
+    valuation_discount: 0.35
+    contrarian_signal: 0.25
+
+strategy:
+  type: contrarian_value
+  holding_period: "1-4_years"
+  position_sizing: "kelly_criterion"
+
+signals:
+  buy:
+    primary: "Fear gauge < 30 AND price/Nav < 0.8"
+    confirmation: "Institutional avoidance > 70%"
+  sell:
+    profit_target: 40.0
+    stop_loss: 12.0
+    time_based: 240

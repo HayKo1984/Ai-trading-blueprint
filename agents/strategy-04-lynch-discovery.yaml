@@ -1,0 +1,38 @@
+name: Lynch Discovery
+description: |
+  Peter Lynch-inspired growth strategy. Find companies with strong
+  earnings growth, reasonable P/E, and clear product moat.
+
+triggers:
+  peg_ratio:
+    operator: "<"
+    value: 1.5
+  earnings_growth:
+    operator: ">"
+    value: 20.0
+  revenue_growth:
+    operator: ">"
+    value: 10.0
+
+scoring:
+  weight: 0.80
+  min_threshold: 8.0
+  factors:
+    peg_ratio: 0.35
+    earnings_growth: 0.30
+    revenue_growth: 0.20
+    industry: 0.15
+
+strategy:
+  type: lynch_growth
+  holding_period: "6-18_months"
+  position_sizing: "kelly_criterion"
+
+signals:
+  buy:
+    primary: "PEG < 1.5 AND Earnings growth > 20%"
+    confirmation: "Revenue growth > 10%"
+  sell:
+    profit_target: 30.0
+    stop_loss: 12.0
+    time_based: 180

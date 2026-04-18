@@ -1,0 +1,38 @@
+name: Nick Sleep Owner Psychology
+description: |
+  Inspired by Nick Sleep (Nomad). Focus on companies with owner-oriented
+  management, long-term thinking, and compounding culture.
+
+triggers:
+  owner_earnings:
+    operator: ">"
+    value: 15.0
+  share_repurchase:
+    operator: ">"
+    value: 5.0
+  management_alignment:
+    operator: ">="
+    value: 8.5
+
+scoring:
+  weight: 0.80
+  min_threshold: 8.0
+  factors:
+    owner_earnings: 0.35
+    capital_allocation: 0.30
+    management_quality: 0.25
+    compounding: 0.10
+
+strategy:
+  type: owner_psychology
+  holding_period: "3-10_years"
+  position_sizing: "buy_and_hold"
+
+signals:
+  buy:
+    primary: "Owner earnings > 15% AND management alignment > 8.5"
+    confirmation: "Compounding culture evident"
+  sell:
+    profit_target: 100.0
+    stop_loss: 30.0
+    time_based: 365

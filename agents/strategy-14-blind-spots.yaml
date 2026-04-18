@@ -1,0 +1,37 @@
+name: Wall Street Blind Spots
+description: |
+  Exploit inefficiencies Wall Street ignores. Small-caps, emerging
+  markets, niche sectors where analyst coverage is thin.
+
+triggers:
+  analyst_coverage:
+    operator: "<"
+    value: 5
+  market_cap_small:
+    operator: "<"
+    value: 1000000000
+  retail_ignored:
+    operator: ">"
+    value: 70.0
+
+scoring:
+  weight: 0.75
+  min_threshold: 8.0
+  factors:
+    coverage_gap: 0.40
+    inefficiency: 0.30
+    alpha_potential: 0.30
+
+strategy:
+  type: market_inefficiency
+  holding_period: "6-18_months"
+  position_sizing: "kelly_criterion"
+
+signals:
+  buy:
+    primary: "Analyst coverage < 5 AND small-cap"
+    confirmation: "Market inefficiency > 70%"
+  sell:
+    profit_target: 40.0
+    stop_loss: 15.0
+    time_based: 180
