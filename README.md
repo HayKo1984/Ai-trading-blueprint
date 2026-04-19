@@ -77,7 +77,7 @@ python tools/morning_brief.py
 
 **Want everything in one package?** Get the complete AI Trading Setup Blueprint on Gumroad:
 
-👉 **[Buy on Gumroad - $197 Early Bird](https://haykohsoul.gumroad.com/l/vbgmwt)**
+👉 **[Buy on Gumroad - $197 Early Bird](https://aitradingway.gumroad.com/l/vbgmwt)**
 
 Includes:
 - 5 PDF Modules (100+ pages)
@@ -90,7 +90,7 @@ Includes:
 
 - GitHub: https://github.com/HayKo1984
 - Email: hello@ai-trading.blueprint
-- Gumroad: https://haykohsoul.gumroad.com/l/vbgmwt
+- Gumroad: https://aitradingway.gumroad.com/l/vbgmwt
 
 ## 📜 License
 
